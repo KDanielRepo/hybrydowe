@@ -1,0 +1,15 @@
+czy pali się gaz? : N/Y ; proszek-gaz
+czy ludzie są zagrożeni pożarem? : N/Y ; wodne-ludzie
+czy pali się olej? : N/Y ; pianowe-olej
+czy pali się sprzęt elektroniczny? : N/Y ;
+ile pomieszczeń jest zagrożonych ogniem? :
+jak długo trwa pożar (w minutach)? :
+czy są ofiary w ludziach
+
+
+^
+|
+
+fakty wejściowe
+
+system ekspertowy -> system rozmyty -> odpowiedz

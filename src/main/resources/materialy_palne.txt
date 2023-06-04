@@ -1,0 +1,8 @@
+Olej spożywczy - F
+Gaz - C
+Ludzie - A1
+Elektronika - E
+Paliwa napędowe lub plastik - B
+Metale np aluminium - C
+Drewno - A
+Pozostałe niewymienione - A
