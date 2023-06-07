@@ -1,0 +1,4 @@
+jak długo trwa pożar (w minutach)?
+ile pomieszczeń jest zagrożonych ogniem?
+ile ludzi jest zagrożonych w pożarze?
+ile materiału gaśniczego znajduje sie w gaśnicy (w kg)?

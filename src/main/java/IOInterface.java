@@ -1,32 +1,53 @@
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class IOInterface {
 
     private QuestionValidator questionValidator;
     private Scanner scanner;
-    private Decision decision;
+    private ExpertSystem expertSystem;
     private FileUtils fileUtils;
 
     public void start() throws IOException {
-        List<String> answers = new ArrayList<>();
-        List<String> questions = fileUtils.getQuestions()
+        List<Question> questions = fileUtils.getQuestions()
                 .stream()
-                .filter(q->questionValidator.validate(q))
+                .filter(q -> questionValidator.validate(q))
                 .collect(Collectors.toList());
-        questions.forEach(question->{
-            System.out.println(question);
-            String answer = scanner.nextLine();
-            answers.add(answer);
+        List<Question> openQuestions = fileUtils.getOpenQuestions()
+                .stream()
+                .filter(q -> questionValidator.validate(q))
+                .collect(Collectors.toList());
+        questions.forEach(question -> {
+            System.out.println(question.getQuestion());
+            String answer = scanner.next();
+            List<String> choices = question.getAnswers()
+                    .stream()
+                    .map(Answer::getValue)
+                    .collect(Collectors.toList());
+            while (!choices.contains(answer)) {
+                System.out.println("Podano nieprawidłową odpowiedź, spróbuj jeszcze raz");
+                answer = scanner.next();
+            }
+            for (Answer questionAnswer : question.getAnswers()) {
+                if (questionAnswer.getValue().equals(answer)) {
+                    question.setPickedAnswer(questionAnswer);
+                }
+            }
         });
-        System.out.println(decision.makeDecision(answers));
+        openQuestions.forEach(question -> {
+            System.out.println(question.getQuestion());
+            String answer = scanner.next();
+            Answer a = new Answer();
+            a.setValue(answer);
+            question.setPickedAnswer(a);
+        });
+        expertSystem.makeDecision(questions, openQuestions);
     }
 
-    public void init(){
-        while(true) {
+    public void init() {
+        while (true) {
             System.out.println("Co chciałbyś zrobić?");
             System.out.println("1 : GASIC POZAR");
             System.out.println("2 : WYJSCIE \n");
@@ -39,7 +60,7 @@ public class IOInterface {
                 }
             } else if (response == 2) {
                 System.exit(0);
-            }else{
+            } else {
                 System.out.println("Wybrano niepoprawną opcję \n");
             }
         }
@@ -47,7 +68,7 @@ public class IOInterface {
 
     public IOInterface() {
         questionValidator = new QuestionValidator();
-        decision = new Decision();
+        expertSystem = new ExpertSystem();
         fileUtils = new FileUtils();
         scanner = new Scanner(System.in);
     }

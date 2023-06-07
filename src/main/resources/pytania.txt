@@ -1,15 +1,7 @@
-czy pali się gaz? : N/Y ; proszek-gaz
-czy ludzie są zagrożeni pożarem? : N/Y ; wodne-ludzie
-czy pali się olej? : N/Y ; pianowe-olej
-czy pali się sprzęt elektroniczny? : N/Y ;
-ile pomieszczeń jest zagrożonych ogniem? :
-jak długo trwa pożar (w minutach)? :
-czy są ofiary w ludziach
+czy pali się gaz? Y/N=Y.PROSZKOWA-1;N.PIANOWA-1
+czy ludzie są zagrożeni pożarem? Y/N=Y.WODNA-2;N.PROSZKOWA-1
+czy pali się olej? Y/N=Y.PIANOWA-2;N.WODNA-1
+czy pali się sprzęt elektroniczny? Y/N=Y.SNIEGOWA-1;N.PROSZKOWA-1
 
-
-^
-|
-
-fakty wejściowe
-
-system ekspertowy -> system rozmyty -> odpowiedz
+fakt – to co użytkownik podaje na wejścia albo to, co nasz system wywnioskuje
+reguła – warunek który podaje się do ifa, jakaś zmienna

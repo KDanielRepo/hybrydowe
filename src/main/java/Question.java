@@ -1,7 +1,12 @@
-import java.util.Map;
+import lombok.Data;
 
+import java.util.List;
+
+@Data
 public class Question {
     private String question;
-    private Map<String,String> answerWeightMap;
+    private List<Answer> answers;
+    private Answer pickedAnswer;
+    private Boolean isOpen;
 }
 //pytanie=odpowiedz.klasa-waga;odpowiedz2.klasa-waga

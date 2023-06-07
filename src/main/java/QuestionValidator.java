@@ -1,8 +1,8 @@
 public class QuestionValidator {
 
-    public boolean validate(String question){
-        return question.contains("?") &&
+    public boolean validate(Question question){
+        return true;/*question.contains("?") &&
                 question.contains(":") &&
-                question.substring(question.lastIndexOf(":")).length() > 1;
+                question.substring(question.lastIndexOf(":")).length() > 1;*/
     }
 }
